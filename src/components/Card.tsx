@@ -4,6 +4,7 @@ import { NotesIcon } from "../icons/NotesIcon";
 import Copy from "../icons/Copy";
 import { useState } from "react";
 import Tick from "../icons/Tick";
+import { toast } from "react-toastify";
 
 interface CardProps {
   title: string;
@@ -36,6 +37,7 @@ export function Card({ title, link, type, contentId, refresh }: CardProps) {
 
     // window.location.reload();
     refresh();
+    toast.success("Content deleted successfully!");
   }
 
   function handleCopy() {

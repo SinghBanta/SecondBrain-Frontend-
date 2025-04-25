@@ -3,6 +3,7 @@ import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function Signin() {
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -24,13 +25,15 @@ export function Signin() {
     const jwt = response.data.token;
     localStorage.setItem("token", jwt);
     navigate("/");
-
-    //Redirect user to dashboard
+    toast.success("Logged in successfully!");
   }
 
   return (
     <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
       <div className="bg-white border min-w-48 p-8 rounded-xl">
+        <h1 className="flex justify-center items-center text-2xl mb-3">
+          Sign In
+        </h1>
         <Input ref={usernameRef} placeholder="Username" />
         <Input ref={passwordRef} placeholder="Password" />
         <div className="flex justify-center pt-4">
@@ -41,6 +44,11 @@ export function Signin() {
             text="Signin"
             fullWidth={true}
           />
+        </div>
+
+        <div className="text-blue-500 text-center block mt-4">
+          <span className="text-black mr-1">Don't have an account?</span>
+          <a href="/signup">Sign up</a>
         </div>
       </div>
     </div>

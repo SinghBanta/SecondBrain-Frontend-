@@ -8,11 +8,15 @@ import { Sidebar } from "../components/Sidebar";
 import { useContent } from "../hooks/useContent";
 import axios from "axios";
 
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 export function Dashboard() {
   const [modalOpen, setModalopen] = useState(false);
   const { contents, refresh } = useContent();
   const [contentType, setContentType] = useState("");
   const [filteredContent, setFilteredContent] = useState(contents);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setFilteredContent(contents);
@@ -55,6 +59,11 @@ export function Dashboard() {
       setFilteredContent(instagram_content);
     }
   }, [contentType, contents]);
+
+  if (localStorage.getItem("token") === null) {
+    window.location.href = "/signin";
+    return;
+  }
 
   return (
     <div>
@@ -110,7 +119,8 @@ export function Dashboard() {
           <Button
             onClick={() => {
               localStorage.removeItem("token");
-              window.location.href = "/signin";
+              navigate("/signin");
+              toast.success("Logged out successfully!");
             }}
             variant="primary"
             text="Logout"

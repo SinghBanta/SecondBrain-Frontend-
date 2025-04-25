@@ -1,9 +1,9 @@
-// import { useState } from "react";
 import { useRef, useState } from "react";
 import { CrossIcon } from "../icons/CrossIcon";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 interface CreateContentType {
   open: boolean;
@@ -46,6 +46,7 @@ export function CreateContentModal({
 
     onClose();
     refresh();
+    toast.success("Content added successfully!");
   }
 
   return (
