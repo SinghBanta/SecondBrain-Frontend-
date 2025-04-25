@@ -97,7 +97,9 @@ export function Dashboard() {
                   },
                 }
               );
-              const shareUrl = `http://localhost:5173/share/${response.data.hash}`;
+              const shareUrl = `${import.meta.env.VITE_FRONTEND_URL}/share/${
+                response.data.hash
+              }`;
               alert(shareUrl); // Optional: Handle the share URL
             }}
             variant="secondary"
