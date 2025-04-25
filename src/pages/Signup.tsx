@@ -22,7 +22,7 @@ export function Signup() {
     );
     console.log(response);
     navigate("/signin");
-    toast.success("Account created successfully! Please sign in.");
+    toast.success("Account created successfully!");
   }
 
   return (
