@@ -22,7 +22,7 @@ export function Sidebar({
         </div>
         <div className="font-medium text-2xl">SecondBrain</div>
       </div>
-      <div className="pt-8 pl-4 ">
+      <div className="pt-8 pl-4 space-y-2">
         <div
           onClick={() => setContentType("")}
           className={`max-w-44 rounded-full ${
