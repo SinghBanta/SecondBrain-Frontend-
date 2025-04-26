@@ -14,9 +14,9 @@ export function Sidebar({
   setContentType: (type: string) => void;
 }) {
   return (
-    <div className="h-screen bg-white border-r w-64 fixed border-gray-200 left-0 top-0 pl-6 ">
+    <div className="max-sm:hidden h-screen bg-white border-r w-64 fixed border-gray-200 left-0 top-0 pl-6 ">
       <div className="flex text-2xl items-center pt-8">
-        <div className="pr-2 ">
+        <div className="pr-2">
           <Logo />
         </div>
         <div className="font-medium text-2xl">SecondBrain</div>
@@ -28,6 +28,7 @@ export function Sidebar({
         >
           <SidebarItem text="All Notes" icon={<AllNotesIcon />} />
         </div>
+
         <div
           onClick={() => setContentType("twitter")}
           className={`max-w-44 rounded ${
@@ -36,6 +37,7 @@ export function Sidebar({
         >
           <SidebarItem text="Twitter" icon={<TwitterIcon />} />
         </div>
+
         <div
           onClick={() => setContentType("youtube")}
           className={`max-w-44 rounded ${
@@ -53,6 +55,7 @@ export function Sidebar({
         >
           <SidebarItem text="LinkedIn" icon={<LinkdInIcon />} />
         </div>
+
         <div
           onClick={() => setContentType("instagram")}
           className={`max-w-44 rounded ${

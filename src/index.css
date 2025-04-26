@@ -6,3 +6,7 @@
 :root {
   --font-roboto: "Roboto", sans-serif; 
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+  width: 0;
+}

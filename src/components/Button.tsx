@@ -39,7 +39,9 @@ export function Button({
       disabled={loading}
     >
       <div className="pr-2">{startIcon}</div>{" "}
-      <span className="text-nowrap">{text}</span>
+      <span className={`text-nowrap ${startIcon && "max-sm:hidden"}`}>
+        {text}
+      </span>
     </button>
   );
 }
