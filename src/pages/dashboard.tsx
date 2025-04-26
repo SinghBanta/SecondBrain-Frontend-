@@ -74,7 +74,7 @@ export function Dashboard() {
         <Sidebar contentType={contentType} setContentType={setContentType} />
       </div>
 
-      <div className="p-4 md:ml-64  min-h-screen bg-gray-100 ">
+      <div className="p-4 md:ml-64 max-sm:ml-0 min-h-screen bg-gray-100 ">
         <CreateContentModal
           open={modalOpen}
           onClose={() => {
