@@ -1,17 +1,20 @@
-import { useRef } from "react";
-import { Button } from "../components/Button";
-import { Input } from "../components/Input";
+import "../assets/styles/login-form.css";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export function Signup() {
+export const Signup = () => {
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   async function signup() {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
+
+    setLoading(true);
 
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_URL}/api/v1/signup`,
@@ -21,33 +24,44 @@ export function Signup() {
       }
     );
     console.log(response);
+    setLoading(false);
     navigate("/signin");
+
     toast.success("Account created successfully!");
   }
 
   return (
-    <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
-      <div className="bg-white border min-w-48 p-8 rounded-xl">
-        <h1 className="flex justify-center items-center text-2xl mb-3">
-          Sign Up
-        </h1>
-        <Input ref={usernameRef} placeholder="Username" />
-        <Input ref={passwordRef} placeholder="Password" />
-        <div className="flex justify-center pt-4">
-          <Button
-            onClick={signup}
-            loading={false}
-            variant="primary"
-            text="Signup"
-            fullWidth={true}
-          />
+    <div className="h-screen w-screen bg-gray-200 flex flex-col justify-center items-center">
+      <form className="form">
+        <div className="title">
+          Welcome,
+          <br />
+          <span>sign up to continue</span>
         </div>
-
-        <div className="text-blue-500 text-center block mt-4">
-          <span className="text-black mr-1">Already have an account? </span>
-          <a href="/signin">Sign in</a>
-        </div>
+        <input
+          ref={usernameRef}
+          className="input"
+          name="username"
+          placeholder="Username"
+          type="text"
+        />
+        <input
+          ref={passwordRef}
+          className="input"
+          name="password"
+          placeholder="Password"
+          type="password"
+        />
+        <button className="button-confirm" onClick={signup} disabled={loading}>
+          Sign Up →
+        </button>
+      </form>
+      <div className="text-center mt-2">
+        <span className="text-gray-500">Already have an account? </span>
+        <a className="text-blue-500 ml-2" href="/signin">
+          Sign in
+        </a>
       </div>
     </div>
   );
-}
+};

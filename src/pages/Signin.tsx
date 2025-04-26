@@ -1,16 +1,17 @@
+import "../assets/styles/login-form.css";
 import axios from "axios";
-import { Button } from "../components/Button";
-import { Input } from "../components/Input";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export function Signin() {
+export const Signin = () => {
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   async function signin() {
+    setLoading(true);
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
 
@@ -21,36 +22,46 @@ export function Signin() {
         password,
       }
     );
-    // console.log(response);
+    console.log(response);
     const jwt = response.data.token;
     localStorage.setItem("token", jwt);
+    setLoading(false);
     navigate("/");
     toast.success("Logged in successfully!");
   }
 
   return (
-    <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
-      <div className="bg-white border min-w-48 p-8 rounded-xl">
-        <h1 className="flex justify-center items-center text-2xl mb-3">
-          Sign In
-        </h1>
-        <Input ref={usernameRef} placeholder="Username" />
-        <Input ref={passwordRef} placeholder="Password" />
-        <div className="flex justify-center pt-4">
-          <Button
-            onClick={signin}
-            loading={false}
-            variant="primary"
-            text="Signin"
-            fullWidth={true}
-          />
+    <div className="h-screen w-screen bg-gray-200 flex flex-col justify-center items-center">
+      <form className="form">
+        <div className="title">
+          Welcome,
+          <br />
+          <span>sign in to continue</span>
         </div>
-
-        <div className="text-blue-500 text-center block mt-4">
-          <span className="text-black mr-1">Don't have an account?</span>
-          <a href="/signup">Sign up</a>
-        </div>
+        <input
+          ref={usernameRef}
+          className="input"
+          name="username"
+          placeholder="Username"
+          type="text"
+        />
+        <input
+          ref={passwordRef}
+          className="input"
+          name="password"
+          placeholder="Password"
+          type="password"
+        />
+        <button className="button-confirm" onClick={signin} disabled={loading}>
+          Sign In →
+        </button>
+      </form>
+      <div className="text-center mt-2 ">
+        <span className="text-gray-500">Don't have an account?</span>
+        <a href="/signup" className="text-blue-500 ml-2">
+          Sign Up
+        </a>
       </div>
     </div>
   );
-}
+};
