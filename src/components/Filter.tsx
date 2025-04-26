@@ -1,6 +1,7 @@
 import { AllNotesIcon } from "../icons/AllNotesIcon";
 import { InstagramIcon } from "../icons/InstagramIcon";
 import { LinkdInIcon } from "../icons/LinkdInIcon";
+import { TextNotes } from "../icons/TextNotes";
 import { TwitterIcon } from "../icons/TwitterIcon";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { SidebarItem } from "./SidebarItem";
@@ -57,6 +58,15 @@ const Filter = ({
         }`}
       >
         <SidebarItem text="Instagram" icon={<InstagramIcon />} />
+      </div>
+
+      <div
+        onClick={() => setContentType("textnote")}
+        className={`max-w-44 rounded-full ${
+          contentType === "textnote" && "bg-gray-200"
+        }`}
+      >
+        <SidebarItem text="Text Note" icon={<TextNotes />} />
       </div>
     </div>
   );

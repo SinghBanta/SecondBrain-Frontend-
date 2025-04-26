@@ -35,7 +35,7 @@ const UserBrain = () => {
         />
       </div>
 
-      <div className="ml-[280px] grid grid-cols-3 max-md:grid-cols-1 gap-6 pt-6 mt-6">
+      <div className="ml-[280px] max-sm:ml-0 px-3 grid grid-cols-3 max-md:grid-cols-1 gap-6 pt-6 mt-6">
         {contents.map(({ type, link, title, _id }) => (
           <Card
             type={type}
