@@ -52,8 +52,8 @@ export function Card({ title, link, type, contentId, refresh }: CardProps) {
   }
 
   return (
-    <div>
-      <div className="p-4 bg-white rounded-md border-gray-200 border min-w-96 min-h-64 mr-3">
+    <div className="shadow-md">
+      <div className="p-4 bg-white rounded-lg border-gray-200 border min-w-96 min-h-64">
         <div className="flex justify-between ">
           <div className="flex items-center text-md">
             <div className="text-gray-500 pr-2">{/* <ShareIcon /> */}</div>
