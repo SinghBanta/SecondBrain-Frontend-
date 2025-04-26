@@ -2,6 +2,7 @@ import { AllNotesIcon } from "../icons/AllNotesIcon";
 import { InstagramIcon } from "../icons/InstagramIcon";
 import { LinkdInIcon } from "../icons/LinkdInIcon";
 import { Logo } from "../icons/Logo";
+import { TextNotes } from "../icons/TextNotes";
 import { TwitterIcon } from "../icons/TwitterIcon";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { SidebarItem } from "./SidebarItem";
@@ -24,14 +25,16 @@ export function Sidebar({
       <div className="pt-8 pl-4 ">
         <div
           onClick={() => setContentType("")}
-          className={`max-w-44 rounded ${contentType === "" && "bg-gray-200"}`}
+          className={`max-w-44 rounded-full ${
+            contentType === "" && "bg-gray-200"
+          }`}
         >
           <SidebarItem text="All Notes" icon={<AllNotesIcon />} />
         </div>
 
         <div
           onClick={() => setContentType("twitter")}
-          className={`max-w-44 rounded ${
+          className={`max-w-44 rounded-full ${
             contentType === "twitter" && "bg-gray-200"
           }`}
         >
@@ -40,7 +43,7 @@ export function Sidebar({
 
         <div
           onClick={() => setContentType("youtube")}
-          className={`max-w-44 rounded ${
+          className={`max-w-44 rounded-full ${
             contentType === "youtube" && "bg-gray-200"
           }`}
         >
@@ -49,7 +52,7 @@ export function Sidebar({
 
         <div
           onClick={() => setContentType("linkedin")}
-          className={`max-w-44 rounded ${
+          className={`max-w-44 rounded-full ${
             contentType === "linkedin" && "bg-gray-200"
           }`}
         >
@@ -58,11 +61,20 @@ export function Sidebar({
 
         <div
           onClick={() => setContentType("instagram")}
-          className={`max-w-44 rounded ${
+          className={`max-w-44 rounded-full ${
             contentType === "instagram" && "bg-gray-200"
           }`}
         >
           <SidebarItem text="Instagram" icon={<InstagramIcon />} />
+        </div>
+
+        <div
+          onClick={() => setContentType("textnote")}
+          className={`max-w-44 rounded-full ${
+            contentType === "textnote" && "bg-gray-200"
+          }`}
+        >
+          <SidebarItem text="Text Note" icon={<TextNotes />} />
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 interface CardProps {
   title: string;
   link: string;
-  type: "twitter" | "youtube" | "instagram" | "linkedin";
+  type: "twitter" | "youtube" | "instagram" | "linkedin" | "textnote";
   contentId: string;
   refresh: () => void;
 }
@@ -78,6 +78,7 @@ export function Card({ title, link, type, contentId, refresh }: CardProps) {
         </div>
 
         <div className="pt-4 h-72 overflow-y-auto mt-2">
+          {type === "textnote" && <>{link}</>}
           {type === "youtube" && (
             <iframe
               className="w-full h-full rounded-xl"

@@ -61,6 +61,14 @@ export function Dashboard() {
       );
       setFilteredContent(instagram_content);
     }
+
+    if (contentType === "textnote") {
+      const textnote_content = contents.filter(
+        // @ts-expect-error something
+        (eachContent) => eachContent.type === "textnote"
+      );
+      setFilteredContent(textnote_content);
+    }
   }, [contentType, contents]);
 
   if (localStorage.getItem("token") === null) {
