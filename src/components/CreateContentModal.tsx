@@ -61,10 +61,10 @@ export function CreateContentModal({
     <div>
       {open && (
         <div>
-          <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0  flex justify-center opacity-60"></div>
+          <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0  flex justify-center opacity-60 "></div>
           <div className="w-screen h-screen  fixed  left-0  flex justify-center">
-            <div className="flex flex-col justify-center w-sm px-2">
-              <div className="bg-white opacity-100 p-4 w-full">
+            <div className="flex flex-col justify-center w-sm px-2 ">
+              <div className="bg-white opacity-100 p-4 w-full rounded">
                 <div className="flex justify-between items-center mb-2">
                   <label
                     htmlFor="textNote"

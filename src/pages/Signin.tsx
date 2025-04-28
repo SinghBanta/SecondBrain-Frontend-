@@ -27,7 +27,7 @@ export const Signin = () => {
     localStorage.setItem("token", jwt);
     setLoading(false);
     navigate("/");
-    toast.success("Logged in successfully!");
+    toast.success("Login successfull");
   }
 
   return (
